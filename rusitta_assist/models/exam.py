@@ -67,7 +67,7 @@ class Exam(models.Model):
     )
 
     # Compute the exam name for easy display
-    @api.depends("date", "grade", "course")
+    @api.depends("number", "grade", "course")
     def _compute_name(self):
         for record in self:
             grade_display = dict(self._fields["grade"].selection).get(record.grade)

@@ -4,7 +4,7 @@
         <field name="name">rusetta_exam_mark_tree</field>
         <field name="model">rusetta.exam.mark</field>
         <field name="arch" type="xml" >
-            <tree string="الدرجات" editable="always" decoration-danger="mark/exam_full_mark &lt; 0.5" decoration-info="(mark/exam_full_mark &gt; 0.4999999) and (mark/exam_full_mark &lt; 0.9)" decoration-success="mark/exam_full_mark &gt; 0.9 ">
+            <tree string="الدرجات"  decoration-danger="mark/exam_full_mark &lt; 0.5" decoration-info="(mark/exam_full_mark &gt; 0.4999999) and (mark/exam_full_mark &lt; 0.9)" decoration-success="mark/exam_full_mark &gt; 0.89999">
 		<field name="student_id" widget="many2one_tags"/>
 		<field name="exam_teacher_id" widget="many2one_tags"/>
                 <field name="exam_name"/>
