@@ -40,9 +40,9 @@ To install the Rusetta Assist module, you can choose one of the following method
 
 2. *Odoo Apps Store:*
 
-Alternatively, you can install the module directly from the Odoo Apps Store:
+    Alternatively, you can install the module directly from the Odoo Apps Store:
 
-[Rusetta Assist on Odoo Apps](https://apps.odoo.com/apps/modules/17.0/rusetta_assist)
+    [Rusetta Assist on Odoo Apps](https://apps.odoo.com/apps/modules/17.0/rusetta_assist)
 
 ## Links
 
