@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rusetta_teacher_user,access_rusetta_teacher_user,model_rusetta_teacher,,1,0,0,0
+access_rusetta_teacher_admin,access_rusetta_teacher_admin,model_rusetta_teacher,base.group_system,1,1,1,1
+access_rusetta_student,access_rusetta_student,model_rusetta_student,,1,1,1,1
+access_rusetta_attendance,access_rusetta_attendance,model_rusetta_attendance,,1,1,1,1
+access_rusetta_place,access_rusetta_place,model_rusetta_place,,1,1,1,1
+access_rusetta_exam,access_rusetta_exam,model_rusetta_exam,,1,1,1,1
+access_rusetta_exam_mark,access_rusetta_exam_mark,model_rusetta_exam_mark,,1,1,1,1
+
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="teacher_model_action" model="ir.actions.act_window">
+    <field name="name">المدرسون</field>
+    <field name="res_model">rusetta.teacher</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<record id="student_model_action" model="ir.actions.act_window">
+    <field name="name">الطلاب</field>
+    <field name="res_model">rusetta.student</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<record id="place_model_action" model="ir.actions.act_window">
+    <field name="name">أماكن الحضور</field>
+    <field name="res_model">rusetta.place</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<record id="attendance_model_action" model="ir.actions.act_window">
+    <field name="name">سجلات الحضور</field>
+    <field name="res_model">rusetta.attendance</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<record id="exam_model_action" model="ir.actions.act_window">
+    <field name="name">الاختبارات</field>
+    <field name="res_model">rusetta.exam</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<record id="exam_mark_model_action" model="ir.actions.act_window">
+	<field name="name">تفاصيل الدرجات</field>
+	<field name="res_model">rusetta.exam.mark</field>
+	<field name="view_mode">tree,form</field>
+</record>
+
+</odoo>
+

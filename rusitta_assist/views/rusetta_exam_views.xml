@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="rusetta_exam_view_tree" model="ir.ui.view">
+        <field name="name">rusetta_exam_tree</field>
+        <field name="model">rusetta.exam</field>
+        <field name="arch" type="xml">
+            <tree string="الاختبارات" default_order="date desc">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="teacher_id" widget="many2one_tags"/>
+                <field name="grade"/>
+                <field name="course"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View     
+	<record id="rusetta_exam_view_form" model="ir.ui.view">
+        <field name="name">rusetta_exam_form</field>
+        <field name="model">rusetta.exam</field>
+        <field name="arch" type="xml">
+            <form string="الاختبار">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" required="1"/></h1>
+                    </div>
+                    <group>
+                        <field name="date" widget="date"/>
+                        <field name="teacher_id" widget="many2one_tags"/>
+                        <field name="grade"/>
+                        <field name="course"/>
+                    </group>
+                    <group>
+                        <field name="student_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>-->
+
+
+    <!-- Search View -->
+    <record id="rusetta_exam_view_search" model="ir.ui.view">
+        <field name="name">rusetta_exam_search</field>
+        <field name="model">rusetta.exam</field>
+        <field name="arch" type="xml">
+            <search string="بحث عن الاختبارات">
+                <field name="name" string="اسم الاختبار"/>
+                <field name="date" string="التاريخ"/>
+                <field name="teacher_id" string="المدرس"/>
+                <field name="number" string="المدرس"/>
+                <group expand="1" string="Group By">
+                    <filter string="المدرس" name="group_by_teacher" context="{'group_by':'teacher_id'}"/>
+                    <filter string="الدرجة" name="group_by_grade" context="{'group_by':'grade'}"/>
+                    <filter string="المادة" name="group_by_course" context="{'group_by':'course'}"/>
+                    <filter string="التاريخ" name="group_by_date" context="{'group_by':'date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+	<record id="rusetta_exam_view_form" model="ir.ui.view">
+        <field name="name">rusetta_exam_form</field>
+        <field name="model">rusetta.exam</field>
+        <field name="arch" type="xml">
+            <form string="الاختبار">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name" required="1"/></h1>
+                    </div>
+                    <group>
+                        <field name="date" widget="date"/>
+                        <field name="teacher_id" widget="many2one_tags"/>
+                        <field name="grade"/>
+                        <field name="course"/>
+                        <field name="number"/>
+                        <field name="semester"/>
+                        <field name="full_mark"/>
+                    </group>
+			<notebook>
+			<page name="درجات الطلاب">
+				<field name="exam_mark_ids" widget="one2many_tags"/>
+			</page>
+			</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <record id="rusetta_exam_mark_view_tree" model="ir.ui.view">
+        <field name="name">rusetta_exam_mark_tree</field>
+        <field name="model">rusetta.exam.mark</field>
+        <field name="arch" type="xml">
+            <tree string="الدرجات">
+		<field name="student_id" widget="many2one_tags"/>
+                <field name="exam_name"/>
+                <field name="exam_date"/>
+		<field name="mark"/>
+            </tree>
+        </field>
+    </record>
+<record id="rusetta_exam_mark_view_form" model="ir.ui.view">
+    <field name="name">rusetta_exam_mark_form</field>
+    <field name="model">rusetta.exam.mark</field>
+    <field name="arch" type="xml">
+        <form string="Student Mark">
+            <group>
+		<field name="student_id" widget="many2one_tags"/>
+                <field name="mark"/>
+            </group>
+        </form>
+    </field>
+</record>
+
+</odoo>
+

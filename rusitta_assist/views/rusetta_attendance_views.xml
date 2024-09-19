@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="rusetta_attendance_view_tree" model="ir.ui.view">
+        <field name="name">rusetta_attendance_tree</field>
+        <field name="model">rusetta.attendance</field>
+        <field name="arch" type="xml">
+		<tree string="Tests" default_order="date desc">
+		    <field name="name"/>
+		    <field name="teacher_id" widget="many2one_tags"/>
+		</tree>
+
+        </field>
+    </record>
+
+  <record id="rusetta_attendance_view_form" model="ir.ui.view">
+        <field name="name">rusetta_attendance_form</field>
+        <field name="model">rusetta.attendance</field>
+        <field name="arch" type="xml">
+                <form string="السجلات">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name" required="1"/></h1>
+			<group>
+		            <field name="place_id" widget="many2one_tags"/>
+                            <field name="date" widget="date"/>
+                            <field name="grade"/>
+			 <field name="teacher_id" widget="many2one_tags"/> 
+			</group>
+
+                        </div>
+
+			<group>
+                                <field name="student_ids" widget="many2one_tags"/>
+			</group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <record id="rusetta_attendance_view_search" model="ir.ui.view">
+        <field name="name">rusetta_attendance_search</field>
+        <field name="model">rusetta.attendance</field>
+        <field name="arch" type="xml">
+            <search string="Search Attendance">
+                <separator/>
+                <field name="name" string="اسم الطالب"/>
+                <separator/>
+                <group expand="1" string="Group By">
+                    <filter string="المكان" name="group_by_place" context="{'group_by':'place_id'}"/>
+                    <filter string="التاريخ" name="group_by_date" context="{'group_by':'date'}"/>
+                    <filter string="المدرس" name="group_by_teacher" context="{'group_by':'teacher_id'}"/>
+                </group>
+                <separator/>
+            </search>
+        </field>
+    </record>
+</odoo>

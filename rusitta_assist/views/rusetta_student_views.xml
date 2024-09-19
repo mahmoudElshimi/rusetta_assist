@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="rusetta_student_view_tree" model="ir.ui.view">
+        <field name="name">rusetta_student_tree</field>
+        <field name="model">rusetta.student</field>
+        <field name="arch" type="xml">
+		<tree string="الطلاب">
+		    <field name="name"/>
+		    <field name="number"/> 
+		    <field name="grade"/> 
+		    <field name="last_seen"/>
+		</tree>
+
+        </field>
+    </record>
+
+<record id="rusetta_student_view_search" model="ir.ui.view">
+    <field name="name">rusetta_student_search</field>
+    <field name="model">rusetta.student</field>
+    <field name="arch" type="xml">
+        <search string="Search Students">
+            <!-- Searchable fields -->
+            <field name="name" string="اسم الطالب"/>
+            <field name="is_still" string="هل ما زال؟"/>
+            <field name="grade" string="الصف"/>
+            <field name="teacher_ids" string="المدرسون"/>
+            <field name="place_ids" string="الأماكن"/>
+            <field name="number" string="الرقم"/>
+            <field name="number_parent" string="رقم ولي الأمر"/>
+            <field name="comment" string="الملاحظات"/>
+
+            <!-- Filters -->
+            <filter string="هل ما زال؟" name="is_still_filter" domain="[('is_still', '=', True)]"/>
+            
+            <!-- Grouping Options -->
+            <group expand="1" string="Group By">
+                <filter string="الاسم" name="group_by_name" context="{'group_by':'name'}"/>
+                <filter string="الصف" name="group_by_grade" context="{'group_by':'grade'}"/>
+                <filter string="المدرسون" name="group_by_teacher_ids" context="{'group_by':'teacher_ids'}"/>
+                <filter string="الأماكن" name="group_by_place_ids" context="{'group_by':'place_ids'}"/>
+                <filter string="هل ما زال؟" name="group_by_is_still" context="{'group_by':'is_still'}"/>
+                <filter string="آخر حضور" name="group_by_last_seen" context="{'group_by':'last_seen'}"/>
+            </group>
+        </search>
+    </field>
+</record>
+
+  <record id="rusetta_student_view_form" model="ir.ui.view">
+        <field name="name">rusetta_student_form</field>
+        <field name="model">rusetta.student</field>
+        <field name="arch" type="xml">
+                <form string="الطالب">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name" required="1"/></h1>
+			<group>
+			<group>
+                            <label for="grade" class="oe_edit_only"/>
+		            <h3> <field name="grade"/> </h3>
+                            <label for="last_seen" class="oe_edit_only"/>
+                            <h3><field name="last_seen" required="1"/></h3>
+                            <label for="is_still" class="oe_edit_only"/>
+                            <h3><field name="is_still" required="1"/></h3>
+			</group>
+			<group>
+                            <label for="number" class="oe_edit_only"/>
+				<h3><field name="number" string="الرقم"/></h3>
+				<label for="number_parent" class="oe_edit_only"/>
+				<h3><field name="number_parent" string="رقم ولي الأمر"/></h3>
+				<label for="comment" class="oe_edit_only"/>
+				<h3><field name="comment" string="الملاحظات"/></h3>
+			</group>
+			</group>
+                        </div>
+			<notebook>
+			<page name="سجلات الحضور">
+                                <field name="attendance_ids" widget="many2one_tags"/>
+			</page>
+			<page name="المدرسون">
+				<field name="teacher_ids" widget="many2one_tags"/>
+			</page>
+			<page name="اﻷماكن">
+		             <field name="place_ids" widget="many2many"/> 
+			</page>
+			<page name="درجات الطلاب">
+				<field name="exam_mark_ids" widget="one2many_tags"/>
+			</page>
+			</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+</odoo>
+

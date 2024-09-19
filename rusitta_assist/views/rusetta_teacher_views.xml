@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="rusetta_teacher_view_form" model="ir.ui.view">
+        <field name="name">rusetta_teacher_form</field>
+        <field name="model">rusetta.teacher</field>
+        <field name="arch" type="xml">
+                <form string="المدرس">
+                    <sheet>
+                        <field name="image" widget='image' class="oe_avatar" options='{"zoom": true, "preview_image": "image_128"}'/>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1><field name="name" required="1"/></h1>
+                        </div>
+			<notebook>
+			<page name="سجلات الحضور">
+                                <field name="attendance_ids" widget="many2one_tags"/>
+			</page>
+			<page name="الطلاب">
+				<field name="student_ids" widget="many2one_tags"/>
+			</page>
+			<page name="اﻷماكن">
+		             <field name="place_ids" widget="many2many"/> 
+			</page>
+			<page name="الامتحانات">
+				<field name="exam_ids" widget="one2many_tags"/>
+			</page>
+			<page name="درجات الطلاب">
+				<field name="exam_mark_ids" widget="one2many_tags"/>
+			</page>
+			</notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+</odoo>
+
