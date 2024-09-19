@@ -13,6 +13,7 @@
             "images/attendance.png"
             "images/exam.png"
             "static/description/banner.png",
+            "images/banner.png",
     ],
 
     "data": [
