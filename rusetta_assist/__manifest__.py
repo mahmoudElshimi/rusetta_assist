@@ -8,10 +8,11 @@
     "version": "1.0",
     "license": "Other proprietary",  # See LICENSE(MIT/X) File in the same dir.
     "images": [
-            "images/thumbnail.png"
+            "images/main_screenshot.png"
             "images/student.png"
             "images/attendance.png"
             "images/exam.png"
+            "static/description/banner.png",
     ],
 
     "data": [
