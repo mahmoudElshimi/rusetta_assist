@@ -61,3 +61,10 @@ class Attendance(models.Model):
                 if record.student_ids:
                     record.student_ids.write({"last_seen": record.date})
         return res
+    _sql_constraints = [
+        (
+            "unique_attenance",
+            "unique(date, grade, place_id, teacher_id)",
+            "يوجد بالفعل سجل حضور بهذه البيانات.",
+        )
+    ]
