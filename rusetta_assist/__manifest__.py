@@ -1,5 +1,5 @@
 {
-    "name": "Rusetta",
+    "name": "Rusetta Assist",
     "summary": "Educational Platform",
     "depends": ["base"],
     "author": "Mahmoud ElShimi",

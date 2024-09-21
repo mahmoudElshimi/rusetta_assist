@@ -47,9 +47,9 @@ class Student(models.Model):
         )
     ]
 
-    @api.constrains("mobile_number")
-    def _check_mobile_number(self):
+    @api.constrains("number")
+    def _check_number(self):
         for record in self:
             # Regular expression for exactly 10 digits
-            if record.mobile_number and not re.match(r"^\d{11}$", record.mobile_number):
+            if record.number and not re.match(r"^\d{11}$", record.number):
                 raise ValidationError("رقم الجوال غير صحيح. يجب أن يتكون من 11 أرقام.")
