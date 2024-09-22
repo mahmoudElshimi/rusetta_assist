@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	    <record id="rusetta_exam_mark_view_tree" model="ir.ui.view">
-        <field name="name">rusetta_exam_mark_tree</field>
+        <field name="name">rusetta.exam.mark.tree</field>
         <field name="model">rusetta.exam.mark</field>
         <field name="arch" type="xml" >
             <tree string="الدرجات"  decoration-danger="mark/exam_full_mark &lt; 0.5" decoration-info="(mark/exam_full_mark &gt; 0.4999999) and (mark/exam_full_mark &lt; 0.9)" decoration-success="mark/exam_full_mark &gt; 0.89999">
@@ -15,7 +15,7 @@
         </field>
     </record>
 <record id="rusetta_exam_mark_view_form" model="ir.ui.view">
-    <field name="name">rusetta_exam_mark_form</field>
+    <field name="name">rusetta.exam.mark.form</field>
     <field name="model">rusetta.exam.mark</field>
     <field name="arch" type="xml">
         <form string="Student Mark">
@@ -27,23 +27,18 @@
     </field>
 </record>
 
-    <!-- Search View -->
-
-
 
 <record id="rusetta_exam_mark_view_search" model="ir.ui.view">
-    <field name="name">rusetta_exam_mark_search</field>
+    <field name="name">rusetta.exam.mark.search</field>
     <field name="model">rusetta.exam.mark</field>
     <field name="arch" type="xml">
         <search string="بحث عن علامات الامتحانات">
-            <!-- Fields for Search -->
             <field name="student_id" string="الطالب"/>
             <field name="exam_teacher_id" string="المدرس"/>
             <field name="exam_id" string="الامتحان"/>
             <field name="mark" string="الدرجة"/>
             <field name="exam_full_mark" string="الدرجة الكاملة"/>
             <field name="exam_date" string="التاريخ"/>
-            <!-- Group By Section -->
             <group expand="1" string="Group By">
                 <filter string="الامتحان" name="group_by_exam" context="{'group_by':'exam_id'}"/>
                 <filter string="الطلاب" name="group_by_student" context="{'group_by':'student_id'}"/>

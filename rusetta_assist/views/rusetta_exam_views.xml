@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Tree View -->
     <record id="rusetta_exam_view_tree" model="ir.ui.view">
-        <field name="name">rusetta_exam_tree</field>
+        <field name="name">rusetta.exam.tree</field>
         <field name="model">rusetta.exam</field>
         <field name="arch" type="xml">
             <tree string="الاختبارات" default_order="date desc">
@@ -15,35 +14,8 @@
         </field>
     </record>
 
-    <!-- Form View     
-	<record id="rusetta_exam_view_form" model="ir.ui.view">
-        <field name="name">rusetta_exam_form</field>
-        <field name="model">rusetta.exam</field>
-        <field name="arch" type="xml">
-            <form string="الاختبار">
-                <sheet>
-                    <div class="oe_title">
-                        <label for="name" class="oe_edit_only"/>
-                        <h1><field name="name" required="1"/></h1>
-                    </div>
-                    <group>
-                        <field name="date" widget="date"/>
-                        <field name="teacher_id" widget="many2one_tags"/>
-                        <field name="grade"/>
-                        <field name="course"/>
-                    </group>
-                    <group>
-                        <field name="student_ids" widget="many2many_tags"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>-->
-
-
-    <!-- Search View -->
     <record id="rusetta_exam_view_search" model="ir.ui.view">
-        <field name="name">rusetta_exam_search</field>
+        <field name="name">rusetta.exam.search</field>
         <field name="model">rusetta.exam</field>
         <field name="arch" type="xml">
             <search string="بحث عن الاختبارات">
@@ -62,7 +34,7 @@
     </record>
 
 	<record id="rusetta_exam_view_form" model="ir.ui.view">
-        <field name="name">rusetta_exam_form</field>
+        <field name="name">rusetta.exam.form</field>
         <field name="model">rusetta.exam</field>
         <field name="arch" type="xml">
             <form string="الاختبار">
@@ -91,7 +63,7 @@
         </record>
 
     <record id="rusetta_exam_mark_view_tree" model="ir.ui.view">
-        <field name="name">rusetta_exam_mark_tree</field>
+        <field name="name">rusetta.exam.mark.tree</field>
         <field name="model">rusetta.exam.mark</field>
         <field name="arch" type="xml">
             <tree string="الدرجات">
@@ -103,7 +75,7 @@
         </field>
     </record>
 <record id="rusetta_exam_mark_view_form" model="ir.ui.view">
-    <field name="name">rusetta_exam_mark_form</field>
+    <field name="name">rusetta.exam.mark.form</field>
     <field name="model">rusetta.exam.mark</field>
     <field name="arch" type="xml">
         <form string="Student Mark">

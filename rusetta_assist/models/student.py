@@ -1,12 +1,20 @@
 import re
 
 from odoo import api, fields, models
+
 from odoo.exceptions import ValidationError
 
 
 class Student(models.Model):
     _name = "rusetta.student"
     _description = "Student"
+    _sql_constraints = [
+        (
+            "unique_name",
+            "unique(number)",
+            "يوجد بالفعل طالب بهذا الرقم",
+        )
+    ]
     name = fields.Char("الطالب", required=True)
     comment = fields.Char("ملاحظات", required=False)
     last_seen = fields.Date("آخر حضور", default=fields.Date.today)
@@ -41,13 +49,6 @@ class Student(models.Model):
     exam_mark_ids = fields.One2many(
         "rusetta.exam.mark", "student_id", string="علامات الطلاب"
     )
-    _sql_constraints = [
-        (
-            "unique_name",
-            "unique(number)",
-            "يوجد بالفعل طالب بهذا الرقم",
-        )
-    ]
 
     @api.constrains("number")
     def _check_number(self):

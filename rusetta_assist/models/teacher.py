@@ -4,6 +4,13 @@ from odoo import fields, models
 class Teacher(models.Model):
     _name = "rusetta.teacher"
     _description = "Teacher"
+    _sql_constraints = [
+        (
+            "unique_name",
+            "unique(name)",
+            "يوجد بالفعل مدرس بهذا الاسم",
+        )
+    ]
     name = fields.Char("المدرس", required=True)
     image = fields.Image(string="Image")  # Add this line to include an image field
     attendance_ids = fields.One2many(
@@ -15,10 +22,3 @@ class Teacher(models.Model):
     exam_mark_ids = fields.One2many(
         "rusetta.exam.mark", "exam_teacher_id", string="علامات الطلاب"
     )
-    _sql_constraints = [
-        (
-            "unique_name",
-            "unique(name)",
-            "يوجد بالفعل مدرس بهذا الاسم",
-        )
-    ]

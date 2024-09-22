@@ -1,10 +1,18 @@
 from odoo import api, fields, models
+
 from odoo.exceptions import ValidationError
 
 
 class ExamMarks(models.Model):
     _name = "rusetta.exam.mark"
     _description = "Exam Marks"
+    _sql_constraints = [
+        (
+            "unique_student_exam",
+            "unique(student_id, exam_id)",
+            "لا يمكن للطالب أن يأخذ نفس الامتحان أكثر من مرة.",
+        ),
+    ]
     mark = fields.Integer("الدرجة", required=True)
     student_id = fields.Many2one("rusetta.student", string="الطالب", required=True)
     exam_id = fields.Many2one("rusetta.exam", string="الامتحان", required=True)
@@ -28,13 +36,6 @@ class ExamMarks(models.Model):
         readonly=True,
         store=True,
     )
-    _sql_constraints = [
-        (
-            "unique_student_exam",
-            "unique(student_id, exam_id)",
-            "لا يمكن للطالب أن يأخذ نفس الامتحان أكثر من مرة.",
-        ),
-    ]
 
     @api.constrains("mark", "exam_full_mark")
     def _check_mark(self):

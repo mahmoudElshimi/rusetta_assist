@@ -1,11 +1,20 @@
-from odoo import api, fields, models
-from odoo.exceptions import ValidationError
 from datetime import timedelta
+
+from odoo import api, fields, models
+
+from odoo.exceptions import ValidationError
 
 
 class Attendance(models.Model):
     _name = "rusetta.attendance"
     _description = "Attendance Record"
+    _sql_constraints = [
+        (
+            "unique_attenance",
+            "unique(date, grade, place_id, teacher_id)",
+            "يوجد بالفعل سجل حضور بهذه البيانات.",
+        )
+    ]
     date = fields.Date("التاريح", default=fields.Date.today)
     teacher_id = fields.Many2one("rusetta.teacher", string="المدرس", required=True)
     student_ids = fields.Many2many("rusetta.student", string="الطلاب")
@@ -61,10 +70,3 @@ class Attendance(models.Model):
                 if record.student_ids:
                     record.student_ids.write({"last_seen": record.date})
         return res
-    _sql_constraints = [
-        (
-            "unique_attenance",
-            "unique(date, grade, place_id, teacher_id)",
-            "يوجد بالفعل سجل حضور بهذه البيانات.",
-        )
-    ]

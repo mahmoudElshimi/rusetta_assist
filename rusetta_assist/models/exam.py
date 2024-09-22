@@ -1,17 +1,23 @@
 from odoo import api, fields, models
+
 from odoo.exceptions import ValidationError
 
 
 class Exam(models.Model):
     _name = "rusetta.exam"
     _description = "Exam Record"
+    _sql_constraints = [
+        (
+            "unique_exam_number",
+            "unique(teacher_id,number, course, grade, semester)",
+            "يوجد بالفعل امتحان بنفس الرقم للمادة والصف والفصل الدراسي.",
+        )
+    ]
     date = fields.Date("التاريخ", default=fields.Date.today)
     teacher_id = fields.Many2one("rusetta.teacher", string="المدرس", required=True)
     name = fields.Char(compute="_compute_name", store=True, string="العنوان")
     number = fields.Integer("رقم الامتحان", required=True, default=0)
     student_ids = fields.One2many("rusetta.student", "exam_id", string="الطلاب")
-
-    # Course and grade
     grade = fields.Selection(
         selection=[
             ("12", "3ث"),
@@ -47,7 +53,6 @@ class Exam(models.Model):
         default="نحو",
     )
 
-    # Semester and marks
     semester = fields.Selection(
         selection=[
             ("1", "الفصل الدراسي الأول"),
@@ -66,36 +71,9 @@ class Exam(models.Model):
         "rusetta.exam.mark", "student_id", string="درجات الطلاب"
     )
 
-    # Compute the exam name for easy display
     @api.depends("number", "grade", "course")
     def _compute_name(self):
         for record in self:
             grade_display = dict(self._fields["grade"].selection).get(record.grade)
             record.name = f"{grade_display}: {record.course} - {record.number}"
 
-    # Ensure exam number is unique for the same course, grade, and semester
-    _sql_constraints = [
-        (
-            "unique_exam_number",
-            "unique(teacher_id,number, course, grade, semester)",
-            "يوجد بالفعل امتحان بنفس الرقم للمادة والصف والفصل الدراسي.",
-        )
-    ]
-
-
-"""
-    @api.constrains("number")
-    def _check_exam_number(self):
-        for record in self:
-            # Ensure the exam number doesn't conflict with another exam in the same course, grade, and semester
-            existing_exam = self.search([
-                ('number', '=', record.number),
-                ('course', '=', record.course),
-                ('grade', '=', record.grade),
-                ('semester', '=', record.semester),
-                ('id', '!=', record.id),
-            ])
-            if existing_exam:
-                raise ValidationError(f"يوجد بالفعل امتحان بنفس الرقم للمادة '{record.course}', الصف '{record.grade}', والفصل الدراسي '{record.semester}'.")
-
-"""

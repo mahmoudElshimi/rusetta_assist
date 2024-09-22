@@ -2,7 +2,7 @@
 <odoo>
 
   <record id="rusetta_place_view_form" model="ir.ui.view">
-        <field name="name">rusetta_place_form</field>
+        <field name="name">rusetta.place.form</field>
         <field name="model">rusetta.place</field>
         <field name="arch" type="xml">
                 <form string="المكان">

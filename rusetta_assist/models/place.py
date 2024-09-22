@@ -4,6 +4,13 @@ from odoo import fields, models
 class Place(models.Model):
     _name = "rusetta.place"
     _description = "المكان"
+    _sql_constraints = [
+        (
+            "unique_name",
+            "unique(name)",
+            "يوجد بالفعل مكان بهئا الاسم",
+        )
+    ]
     name = fields.Char("الأماكن", required=True)
     type_ = fields.Selection(
         string="النوع",
@@ -21,10 +28,3 @@ class Place(models.Model):
     attendance_ids = fields.One2many(
         "rusetta.attendance", "place_id", string="سجلات الحضور"
     )
-    _sql_constraints = [
-        (
-            "unique_name",
-            "unique(name)",
-            "يوجد بالفعل مكان بهئا الاسم",
-        )
-    ]
