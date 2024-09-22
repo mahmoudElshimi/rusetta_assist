@@ -55,25 +55,30 @@
             </search>
         </field>
     </record>
-
-    <record id="rusetta_attendance_view_kanban" model="ir.ui.view">
-        <field name="name">rusetta_attendance_search</field>
-        <field name="model">rusetta.attendance</field>
-        <field name="arch" type="xml">
-	<kanban>
-	    <templates>
-		<t t-name="kanban-box">
-		    <div class="oe_kanban_global_click">
-			<field name="name"/>
-			<group>
-			<field name="date"/>
-			</group>
-		    </div>
-		</t>
-	    </templates>
-	</kanban>
-
-    </field>
-</record>
+	<record id="rusetta_attendance_view_kanban" model="ir.ui.view">
+	    <field name="name">rusetta_attendance_kanban</field>
+	    <field name="model">rusetta.attendance</field>
+	    <field name="arch" type="xml">
+		<kanban>
+		    <templates>
+			<t t-name="kanban-box">
+			    <div class="oe_kanban_global_click">
+				<strong><field name="name"/></strong>
+				<div>
+				    Date: <field name="date"/>
+				</div>
+			    </div>
+			</t>
+			<t t-name="kanban-header">
+			    <div class="kanban-header">
+				<t t-if="record.date.value">
+				    <h3><t t-esc="record.date.value"/></h3>
+				</t>
+			    </div>
+			</t>
+		    </templates>
+		</kanban>
+	    </field>
+	</record>
 
 </odoo>
